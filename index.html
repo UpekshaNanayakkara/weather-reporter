@@ -3,24 +3,37 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Today Weather </title>
+  <title>Today Weather</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <div class="container">
-    <h1>Current Weather</h1>
+  <div class="main-container">
+    <!-- Left Column -->
+    <div class="column left">
+      <h1>Colombo Weather</h1>
+      <div class="weather-box" id="colomboWeather">
+        <p><strong>Temperature:</strong> <span id="temp">Loading...</span></p>
+        <p><strong>Humidity:</strong> <span id="humidity">Loading...</span></p>
+        <p><strong>Wind Speed:</strong> <span id="wind">Loading...</span></p>
+        <p><strong>UV Index:</strong> <span id="uv">Loading...</span></p>
+        <img id="weatherIcon" alt="Weather Icon" />
+      </div>
+    </div>
 
-    <input type="text" id="cityInput" placeholder="Enter city name" />
-    <button onclick="getWeather()">Get Weather</button>
-
-    <button onclick="toggleDarkMode()">🌙</button>
-    
-    <div id="weather">
-      <p><strong>Temperature:</strong> <span id="temp">Loading...</span></p>
-      <p><strong>Humidity:</strong> <span id="humidity">Loading...</span></p>
-      <p><strong>Wind Speed:</strong> <span id="wind">Loading...</span></p>
-      <p><strong>UV Index:</strong> <span id="uv">Loading...</span></p>
-      <img id="weatherIcon" alt="Weather Icon" />
+    <!-- Right Column -->
+    <div class="column right">
+      <h1>Search Your City Weather</h1>
+      <div class="input-group">
+        <input type="text" id="cityInput" placeholder="Enter city name" />
+        <button onclick="getWeather()">Get Weather</button>
+      </div>
+      <div class="weather-box" id="searchWeather">
+        <p><strong>Temperature:</strong> <span id="searchTemp">--</span></p>
+        <p><strong>Humidity:</strong> <span id="searchHumidity">--</span></p>
+        <p><strong>Wind Speed:</strong> <span id="searchWind">--</span></p>
+        <p><strong>UV Index:</strong> <span id="searchUv">--</span></p>
+        <img id="searchIcon" alt="Weather Icon" />
+      </div>
     </div>
   </div>
 

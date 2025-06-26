@@ -3,49 +3,83 @@ body {
   background-image: url("src/img/pngtree-white-cloud-on-blue-sky-weather-background-image_410050.jpg");
   background-size: cover;
   background-repeat: no-repeat;
-  background-position: center center;
+  background-position: center;
   padding: 40px;
+  margin: 0;
   text-align: center;
   transition: background 0.3s, color 0.3s;
 }
 
+.main-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 15px; /* Reduced gap between columns */
+}
 
-.container {
-  background: white;
-  padding: 20px;
+.column {
+  background: rgba(255, 255, 255, 0.85);
+  padding: 50px;
   border-radius: 10px;
-  display: inline-block;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
-  width: 400px;
+  width: 600px;
   max-width: 90%;
+  height: 500px;
+  max-height: 90%;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
 }
 
-input, button {
-  padding: 10px;
+h1 {
+  margin-bottom: 20px;
+}
+
+.weather-box {
+  margin-top: 50px;
+  font: 1.5em sans-serif;
+}
+
+.input-group {
+  display: flex;
+  gap: 10px;
   margin: 10px 0;
-  font-size: 1rem;
+  width: 100%;
 }
 
-button {
+.input-group input {
+  flex: 1;
+  padding: 10px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  color: #000;
+}
+
+.input-group button {
+  padding: 10px 20px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  color: #000;
   cursor: pointer;
 }
 
-img#weatherIcon {
+img {
   width: 60px;
   margin-top: 10px;
 }
 
-.dark-mode {
-  background: #121212;
-  color: #ffffff;
-}
-
-@media (max-width: 600px) {
-  .container {
-    width: 90%;
+@media (max-width: 768px) {
+  .main-container {
+    flex-direction: column;
+    align-items: center;
   }
 
-  input, button {
+  .input-group {
+    flex-direction: column;
+  }
+
+  .input-group input,
+  .input-group button {
     width: 100%;
   }
 }

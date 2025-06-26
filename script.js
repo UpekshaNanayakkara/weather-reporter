@@ -1,33 +1,45 @@
-const defaultCity = 'Colombo';
-const apiKey = '6c81856ff0054ebbae275251252406'; 
+const apiKey = '6c81856ff0054ebbae275251252406';
 
-function updateWeatherUI(data) {
-  document.getElementById('temp').textContent = `${data.current.temp_c} °C`;
-  document.getElementById('humidity').textContent = `${data.current.humidity} %`;
-  document.getElementById('wind').textContent = `${data.current.wind_kph} km/h`;
-  document.getElementById('uv').textContent = data.current.uv;
-  document.getElementById('weatherIcon').src = data.current.condition.icon;
-  document.getElementById('weatherIcon').alt = data.current.condition.text;
+// Load default Colombo weather
+function loadColomboWeather() {
+  fetch(`https://api.weatherapi.com/v1/current.json?key=${apiKey}&q=Colombo`)
+    .then(response => response.json())
+    .then(data => {
+      document.getElementById('temp').textContent = `${data.current.temp_c} °C`;
+      document.getElementById('humidity').textContent = `${data.current.humidity} %`;
+      document.getElementById('wind').textContent = `${data.current.wind_kph} km/h`;
+      document.getElementById('uv').textContent = data.current.uv;
+      document.getElementById('weatherIcon').src = data.current.condition.icon;
+      document.getElementById('weatherIcon').alt = data.current.condition.text;
+    })
+    .catch(error => {
+      console.error("Error loading Colombo weather:", error);
+    });
 }
 
-function getWeather(cityName) {
-  const city = cityName || document.getElementById('cityInput').value || defaultCity;
+// Load weather for user-entered city
+function getWeather() {
+  const city = document.getElementById('cityInput').value.trim();
+  if (!city) return;
 
   fetch(`https://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${city}`)
     .then(response => {
       if (!response.ok) throw new Error("City not found");
       return response.json();
     })
-    .then(data => updateWeatherUI(data))
+    .then(data => {
+      document.getElementById('searchTemp').textContent = `${data.current.temp_c} °C`;
+      document.getElementById('searchHumidity').textContent = `${data.current.humidity} %`;
+      document.getElementById('searchWind').textContent = `${data.current.wind_kph} km/h`;
+      document.getElementById('searchUv').textContent = data.current.uv;
+      document.getElementById('searchIcon').src = data.current.condition.icon;
+      document.getElementById('searchIcon').alt = data.current.condition.text;
+    })
     .catch(error => {
       alert("City not found!");
-      console.error("Error fetching weather data:", error);
+      console.error("Error fetching city weather:", error);
     });
 }
 
-function toggleDarkMode() {
-  document.body.classList.toggle("dark-mode");
-}
-
-// Optional: Load Colombo weather on page load
-// window.onload = () => getWeather(defaultCity);
+// Load default weather on page load
+window.onload = loadColomboWeather;
