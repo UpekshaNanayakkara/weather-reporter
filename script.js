@@ -11,6 +11,7 @@ function loadColomboWeather() {
       document.getElementById('uv').textContent = data.current.uv;
       document.getElementById('weatherIcon').src = data.current.condition.icon;
       document.getElementById('weatherIcon').alt = data.current.condition.text;
+      document.getElementById('description').textContent = data.current.condition.text;
     })
     .catch(error => {
       console.error("Error loading Colombo weather:", error);
@@ -34,12 +35,27 @@ function getWeather() {
       document.getElementById('searchUv').textContent = data.current.uv;
       document.getElementById('searchIcon').src = data.current.condition.icon;
       document.getElementById('searchIcon').alt = data.current.condition.text;
+      document.getElementById('description').textContent = data.current.condition.text;
+
+      // Update Date and Time
+      updateDateTime();
     })
     .catch(error => {
       alert("City not found!");
       console.error("Error fetching city weather:", error);
     });
-}
+  }
+
+    function updateDateTime() {
+      const now = new Date();
+      const date = now.toLocaleDateString();
+      const time = now.toLocaleTimeString();
+      document.getElementById('currentDateTime').textContent = `${date} ${time}`;
+    }
+
+// Call updateDateTime every second
+setInterval(updateDateTime, 1000);
+
 
 // Load default weather on page load
 window.onload = loadColomboWeather;
