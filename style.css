@@ -1,12 +1,38 @@
-@media (max-width: 600px) {
-  .container {
-    width: 90%;
-  }
+body {
+  font-family: Arial, sans-serif;
+  background-image: url("src/img/pngtree-white-cloud-on-blue-sky-weather-background-image_410050.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  padding: 40px;
+  text-align: center;
+  transition: background 0.3s, color 0.3s;
+}
 
-  input, button {
-    width: 100%;
-    margin-top: 10px;
-  }
+
+.container {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  display: inline-block;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  width: 400px;
+  max-width: 90%;
+}
+
+input, button {
+  padding: 10px;
+  margin: 10px 0;
+  font-size: 1rem;
+}
+
+button {
+  cursor: pointer;
+}
+
+img#weatherIcon {
+  width: 60px;
+  margin-top: 10px;
 }
 
 .dark-mode {
@@ -14,17 +40,12 @@
   color: #ffffff;
 }
 
-body {
-  font-family: Arial, sans-serif;
-  background: #e0f7fa;
-  padding: 40px;
-  text-align: center;
-}
+@media (max-width: 600px) {
+  .container {
+    width: 90%;
+  }
 
-.container {
-  background: white;
-  padding: 20px;
-  border-radius: 10px;
-  display: inline-block;
-  box-shadow: 0px 0px 10px rgba(0,0,0,0.2);
+  input, button {
+    width: 100%;
+  }
 }

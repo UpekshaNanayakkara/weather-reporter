@@ -3,26 +3,27 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Weather in Colombo</title>
+  <title>Today Weather </title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <div class="container">
-    <h1>Current Weather in Colombo</h1>
+    <h1>Current Weather</h1>
+
+    <input type="text" id="cityInput" placeholder="Enter city name" />
+    <button onclick="getWeather()">Get Weather</button>
+
+    <button onclick="toggleDarkMode()">🌙</button>
+    
     <div id="weather">
       <p><strong>Temperature:</strong> <span id="temp">Loading...</span></p>
       <p><strong>Humidity:</strong> <span id="humidity">Loading...</span></p>
       <p><strong>Wind Speed:</strong> <span id="wind">Loading...</span></p>
       <p><strong>UV Index:</strong> <span id="uv">Loading...</span></p>
+      <img id="weatherIcon" alt="Weather Icon" />
     </div>
-    <div id="loader" style="display:none;">Loading...>
-      <img id="weatherIcon" />
-      <input type="text" id="cityInput" placeholder="Enter city name" />
-      <button onclick="getWeather()">Get Weather</button>
-    </div>
-    <button onclick="toggleDarkMode()">🌙</button>
-
   </div>
+
   <script src="script.js"></script>
 </body>
 </html>

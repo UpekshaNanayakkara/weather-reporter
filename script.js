@@ -1,43 +1,33 @@
-const apiKey = '6c81856ff0054ebbae275251252406 '; 
-const city = 'Colombo';
+const defaultCity = 'Colombo';
+const apiKey = '6c81856ff0054ebbae275251252406'; 
 
-fetch(`https://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${city}`)
-  .then(response => response.json())
-  .then(data => {
-    document.getElementById('temp').textContent = `${data.current.temp_c} °C`;
-    document.getElementById('humidity').textContent = `${data.current.humidity} %`;
-    document.getElementById('wind').textContent = `${data.current.wind_kph} km/h`;
-    document.getElementById('uv').textContent = data.current.uv;
-  })
-  .catch(error => {
-    console.error('Error fetching weather data:', error);
-  });
+function updateWeatherUI(data) {
+  document.getElementById('temp').textContent = `${data.current.temp_c} °C`;
+  document.getElementById('humidity').textContent = `${data.current.humidity} %`;
+  document.getElementById('wind').textContent = `${data.current.wind_kph} km/h`;
+  document.getElementById('uv').textContent = data.current.uv;
+  document.getElementById('weatherIcon').src = data.current.condition.icon;
+  document.getElementById('weatherIcon').alt = data.current.condition.text;
+}
 
-  function getWeather() {
-  const city = document.getElementById('cityInput').value || "Colombo";
-  const apiKey = 'YOUR_API_KEY';
+function getWeather(cityName) {
+  const city = cityName || document.getElementById('cityInput').value || defaultCity;
 
-  document.getElementById('loader').style.display = "block";
   fetch(`https://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${city}`)
-    .then(response => response.json())
-    .then(data => {
-      document.getElementById('temp').textContent = `${data.current.temp_c} °C`;
-      document.getElementById('humidity').textContent = `${data.current.humidity} %`;
-      document.getElementById('wind').textContent = `${data.current.wind_kph} km/h`;
-      document.getElementById('uv').textContent = data.current.uv;
+    .then(response => {
+      if (!response.ok) throw new Error("City not found");
+      return response.json();
     })
+    .then(data => updateWeatherUI(data))
     .catch(error => {
       alert("City not found!");
-      console.error(error);
+      console.error("Error fetching weather data:", error);
     });
 }
-document.getElementById('loader').style.display = "none";
-
-document.getElementById('weatherIcon').src = data.current.condition.icon;
 
 function toggleDarkMode() {
   document.body.classList.toggle("dark-mode");
 }
 
-window.onload = getWeather;
-
+// Optional: Load Colombo weather on page load
+// window.onload = () => getWeather(defaultCity);
