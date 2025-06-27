@@ -4,46 +4,45 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Today Weather</title>
-  <link rel="stylesheet" href="/style.css" />
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <div>
-      <div class="main-container">
+  <div class="main-container">
     <!-- Left Column -->
     <div class="column left">
       <h1><b>Colombo Weather</b></h1>
       <div class="weather-box" id="colomboWeather">
-        <p><strong><b>Temperature:</b></strong> <span id="temp">Loading...</span></p>
-        <p><strong><b>Humidity:</b></strong> <span id="humidity">Loading...</span></p>
-        <p><strong><b>Wind Speed:</b></strong> <span id="wind">Loading...</span></p>
-        <p><strong><b>UV Index:</b></strong> <span id="uv">Loading...</span></p>
+        <p><strong>Temperature:</strong> <span id="temp">Loading...</span></p>
+        <p><strong>Humidity:</strong> <span id="humidity">Loading...</span></p>
+        <p><strong>Wind Speed:</strong> <span id="wind">Loading...</span></p>
+        <p><strong>UV Index:</strong> <span id="uv">Loading...</span></p>
         <img id="weatherIcon" alt="Weather Icon" />
-        <p id="colomboDescription"><strong></strong></p>
+        <p id="colomboDescription"></p>
       </div>
     </div>
 
     <!-- Right Column -->
     <div class="column right">
-      <h1><b>Search Your City Weathe</b></h1>
+      <h1><b>Search Your City Weather</b></h1>
       <div class="input-group">
         <input type="text" id="cityInput" placeholder="Enter city name" />
         <button onclick="getWeather()">Get Weather</button>
       </div>
       <div class="weather-box" id="searchWeather">
-        <p><strong><b>Temperature:</b></strong> <span id="searchTemp">--</span></p>
-        <p><strong><b>Humidity:</b></strong> <span id="searchHumidity">--</span></p>
-        <p><strong><b>Wind Speed:</b></strong> <span id="searchWind">--</span></p>
-        <p><strong><b>UV Index:</b></strong> <span id="searchUv">--</span></p>
+        <p><strong>Temperature:</strong> <span id="searchTemp">--</span></p>
+        <p><strong>Humidity:</strong> <span id="searchHumidity">--</span></p>
+        <p><strong>Wind Speed:</strong> <span id="searchWind">--</span></p>
+        <p><strong>UV Index:</strong> <span id="searchUv">--</span></p>
         <img id="searchIcon" alt="Weather Icon" />
-        <p id="searchDescription"><strong></strong></p>
+        <p id="searchDescription"></p>
       </div>
     </div>
   </div>
-  </div>
+
   <div class="datetime-box">
       <p><strong>Current Date and Time:</strong> <span id="currentDateTime">--</span></p>
   </div>
 
-  <script src="./script.js></script>
+  <script src="script.js"></script>
 </body>
 </html>
