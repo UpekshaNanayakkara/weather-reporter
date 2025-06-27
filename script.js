@@ -14,7 +14,7 @@ function loadColomboWeather() {
       document.getElementById('uv').textContent = data.current.uv;
       document.getElementById('weatherIcon').src = data.current.condition.icon;
       document.getElementById('weatherIcon').alt = data.current.condition.text;
-      document.getElementById('description').textContent = data.current.condition.text;
+      document.getElementById('colomboDescription').textContent = data.current.condition.text;
     })
     .catch(error => {
       console.error("Error loading Colombo weather:", error);
@@ -38,8 +38,7 @@ function getWeather() {
       document.getElementById('searchUv').textContent = data.current.uv;
       document.getElementById('searchIcon').src = data.current.condition.icon;
       document.getElementById('searchIcon').alt = data.current.condition.text;
-      document.getElementById('description').textContent = data.current.condition.text;
-
+      document.getElementById('searchDescription').textContent = data.current.condition.text;
       // Update Date and Time
       updateDateTime();
     })
