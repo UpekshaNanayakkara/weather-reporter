@@ -1,3 +1,6 @@
+console.log("Script loaded successfully!");
+
+
 const apiKey = '6c81856ff0054ebbae275251252406';
 
 // Load default Colombo weather
